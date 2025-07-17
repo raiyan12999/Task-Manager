@@ -1,5 +1,6 @@
 package com.taskmanager.controller;
 
+import com.taskmanager.exception.InvalidTaskException;
 import com.taskmanager.service.TaskService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.taskmanager.model.Task;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 @RestController
@@ -38,3 +42,5 @@ public class TaskController {
     }
 
 }
+
+
