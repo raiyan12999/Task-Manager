@@ -1,6 +1,6 @@
 package com.taskmanager.controller;
 
-import com.taskmanager.exception.InvalidTaskException;
+import jakarta.validation.Valid;
 import com.taskmanager.service.TaskService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.taskmanager.model.Task;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
+
 
 
 @RestController
@@ -36,7 +35,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task){
+    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task){
         Task savedTask = taskService.createTask(task);
         return ResponseEntity.ok(savedTask);
     }
